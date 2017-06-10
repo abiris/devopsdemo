@@ -1,0 +1,21 @@
+- hosts: tag_Name_demo
+  become: yes
+  tasks:
+    - name: Install unzip
+      apt:
+        name: unzip
+        update_cache: yes
+    - name: Install ansible
+      apt:
+        name: ansible
+    - name: Download terraform
+      unarchive:
+        src: https://releases.hashicorp.com/terraform/0.9.8/terraform_0.9.8_linux_amd64.zip
+        dest: /usr/local/bin
+        remote_src: True
+    - name: Download packer
+      unarchive:
+        src: https://releases.hashicorp.com/packer/1.0.0/packer_1.0.0_linux_amd64.zip
+        dest: /usr/local/bin
+        remote_src: True
+    
